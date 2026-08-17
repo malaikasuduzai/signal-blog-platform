@@ -1,0 +1,233 @@
+/* components/SubmitBlogForm.module.css
+   Matches the dashboard's panel/card language (see dashboard.module.css)
+   instead of borrowing the narrow single-column AuthForm styling. */
+
+.page {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.head {
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-indigo);
+  margin-bottom: 8px;
+}
+
+.head h1 {
+  font-size: 1.65rem;
+  margin-bottom: 8px;
+}
+
+.panel {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  width: 100%;
+  max-width: 960px;
+  overflow: hidden;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formError,
+.formSuccess {
+  margin: 22px 26px 0;
+  padding: 11px 14px;
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+}
+
+.formError {
+  background: #fbeaea;
+  border: 1px solid #e3b8b8;
+  color: #942c2c;
+}
+
+.formSuccess {
+  background: #e9f4ee;
+  border: 1px solid #b9dcc7;
+  color: #23643e;
+}
+
+/* ---------- Section groups ---------- */
+
+.section {
+  padding: 26px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+.sectionTitle {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+  margin-bottom: 18px;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.optional {
+  font-weight: 500;
+  color: var(--color-ink-faint);
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.field input,
+.field textarea,
+.field select {
+  font: inherit;
+  padding: 11px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-paper);
+  color: var(--color-ink);
+  transition: border-color 0.12s ease, box-shadow 0.12s ease, background 0.12s ease;
+}
+
+.field textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-indigo);
+  background: var(--color-white);
+  box-shadow: 0 0 0 3px var(--color-indigo-tint);
+}
+
+.field select {
+  cursor: pointer;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+}
+
+.fieldError {
+  font-size: 0.8rem;
+  color: var(--color-amber-dark);
+  font-weight: 600;
+}
+
+.contentField textarea {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.92rem;
+}
+
+.charCount {
+  font-size: 0.76rem;
+  color: var(--color-ink-faint);
+  text-align: right;
+}
+
+/* ---------- Actions ---------- */
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 20px 26px;
+  background: var(--color-paper-dim);
+  flex-wrap: wrap;
+}
+
+.ghostBtn {
+  padding: 11px 18px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font: inherit;
+  transition: background 0.12s ease, filter 0.12s ease;
+}
+
+.ghostBtn:hover:not(:disabled) {
+  background: var(--color-paper);
+}
+
+.primaryBtn {
+  padding: 11px 20px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: var(--color-indigo);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.88rem;
+  cursor: pointer;
+  font: inherit;
+  transition: filter 0.12s ease;
+}
+
+.primaryBtn:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+
+.ghostBtn:disabled,
+.primaryBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (min-width: 640px) {
+  .row.twoCol {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding: 20px 18px;
+  }
+
+  .actions {
+    padding: 18px;
+    flex-direction: column-reverse;
+  }
+
+  .actions .primaryBtn,
+  .actions .ghostBtn {
+    width: 100%;
+    text-align: center;
+  }
+}

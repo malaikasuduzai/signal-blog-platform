@@ -1,0 +1,147 @@
+.section {
+  padding: 68px 0 0;
+}
+
+.featuredGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+}
+
+.authorsSection {
+  padding-bottom: 12px;
+}
+
+.authorsHeader {
+  margin-bottom: 26px;
+}
+
+.sectionEyebrow,
+.emptyEyebrow {
+  margin-bottom: 8px;
+  color: var(--color-indigo);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.authorsTitle {
+  font-size: clamp(2rem, 4vw, 3rem);
+  letter-spacing: -0.03em;
+}
+
+.emptyCopy {
+  max-width: 42ch;
+  color: var(--color-ink-soft);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.authorStack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 22px 8px;
+}
+
+.authorStackItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 96px;
+  margin-left: -18px;
+  transition: transform 180ms var(--ease-out, cubic-bezier(0.23, 1, 0.32, 1));
+}
+
+.authorStackItem:first-child {
+  margin-left: 0;
+}
+
+.authorStackItem:hover {
+  transform: translateY(-4px);
+  z-index: 20 !important;
+}
+
+.authorAvatar {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid var(--color-paper);
+  border-radius: 50%;
+  color: var(--color-white);
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 700;
+  box-shadow: var(--shadow-card);
+}
+
+.authorStackName {
+  max-width: 96px;
+  overflow: hidden;
+  color: var(--color-ink-soft);
+  font-size: 0.76rem;
+  font-weight: 600;
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.authorCta {
+  margin-top: 22px;
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+}
+
+.authorCtaLink,
+.emptyCopy a {
+  color: var(--color-indigo);
+  font-weight: 700;
+}
+
+.emptyState {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.emptyState :global(h2) {
+  margin-bottom: 12px;
+}
+
+@media (min-width: 640px) {
+  .cardGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .section {
+    padding-top: 88px;
+  }
+
+  .featuredGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .authorsHeader {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+}

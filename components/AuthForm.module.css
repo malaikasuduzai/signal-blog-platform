@@ -1,0 +1,136 @@
+.wrap {
+  padding: 64px 24px 100px;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber-dark);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.wrap h1 {
+  font-size: 1.8rem;
+  margin-bottom: 8px;
+}
+
+.sub {
+  color: var(--color-ink-soft);
+  margin-bottom: 32px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.labelRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.forgotLink {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-indigo);
+  white-space: nowrap;
+}
+
+.forgotLink:hover {
+  text-decoration: underline;
+}
+
+.field input,
+.field textarea,
+.field select {
+  font: inherit;
+  padding: 11px 13px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background: var(--color-white);
+  color: var(--color-ink);
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--color-indigo);
+  box-shadow: 0 0 0 3px var(--color-indigo-tint);
+}
+
+.fieldError {
+  font-size: 0.8rem;
+  color: var(--color-amber-dark);
+}
+
+.formError {
+  background: #fbeaea;
+  border: 1px solid #e3b8b8;
+  color: #942c2c;
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.formSuccess {
+  background: #e9f4ee;
+  border: 1px solid #b9dcc7;
+  color: #23643e;
+  padding: 10px 13px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+}
+
+.submit {
+  margin-top: 6px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--color-indigo);
+  color: var(--color-white);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.switch {
+  margin-top: 22px;
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+  text-align: center;
+}
+
+.switch a {
+  color: var(--color-indigo);
+  font-weight: 600;
+}
+
+.hint {
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+}

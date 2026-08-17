@@ -1,0 +1,487 @@
+/* app/dashboard/dashboard.module.css
+   Author panel -- same shell/sidebar/panel language as app/admin/admin.module.css,
+   so the author and admin panels read as the same product. */
+
+/* ---------- Shell ---------- */
+
+.shell {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-paper-dim);
+}
+
+/* ---------- Sidebar ---------- */
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+  background: var(--gradient-indigo);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  padding: 22px 16px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 10px 22px;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.brandMark {
+  width: 30px;
+  height: 30px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-indigo) 50%, var(--color-amber) 50%, var(--color-amber) 100%);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.4) inset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+.brandTag {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.62);
+  text-transform: uppercase;
+  margin-top: 1px;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  flex: 1;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.89rem;
+  font-weight: 500;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.navLink:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+.navLinkActive {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.navIcon {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+  opacity: 0.9;
+}
+
+.sidebarDivider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.14);
+  margin: 14px 4px;
+}
+
+.sidebarFoot {
+  padding: 10px;
+}
+
+.sidebarUser {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.08);
+  margin-bottom: 8px;
+}
+
+.sidebarUserAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.22);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+}
+
+.sidebarUserName {
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #fff;
+  line-height: 1.25;
+}
+
+.sidebarUserRole {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.viewSiteLink,
+.sidebarLogout {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 9px 10px;
+  border-radius: var(--radius-sm);
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.75);
+  font: inherit;
+  font-size: 0.83rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.viewSiteLink:hover,
+.sidebarLogout:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+/* ---------- Main content ---------- */
+
+.main {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  padding: 34px 40px 80px;
+  max-width: 1400px;
+}
+
+/* ---------- Overview page header / list page headers ---------- */
+
+.overviewHead,
+.listHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 28px;
+}
+
+.eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-indigo);
+  margin-bottom: 6px;
+}
+
+.greetingName,
+.listHead h1 {
+  font-size: 1.65rem;
+}
+
+/* ---------- Buttons ---------- */
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  background: var(--color-indigo);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: filter 0.12s ease;
+}
+
+.primaryBtn:hover {
+  filter: brightness(1.08);
+}
+
+.ghostBtn {
+  padding: 9px 16px;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-ink);
+  font-weight: 600;
+  cursor: pointer;
+  font: inherit;
+}
+
+/* ---------- Stat cards ---------- */
+
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.statCard {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  box-shadow: var(--shadow-card);
+  position: relative;
+  overflow: hidden;
+}
+
+.statCard::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: var(--gradient-indigo);
+}
+
+.statCard:nth-child(2)::before {
+  background: linear-gradient(135deg, #c57e22, #e39b3c);
+}
+.statCard:nth-child(3)::before {
+  background: linear-gradient(135deg, #1f6e3e, #2f9e5b);
+}
+.statCard:nth-child(4)::before {
+  background: linear-gradient(135deg, #942c2c, #d3453f);
+}
+
+.statNumber {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-ink-faint);
+}
+
+/* ---------- Panels ---------- */
+
+.panel {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+
+.panelBody {
+  padding: 6px 22px;
+}
+
+.activityTitle {
+  font-size: 1.12rem;
+  margin-bottom: 14px;
+}
+
+/* ---------- Row list (recent activity / blog rows) ---------- */
+
+.activityList,
+.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.activityRow,
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.activityList > :last-child,
+.list > :last-child {
+  border-bottom: none;
+}
+
+.activityRow:hover,
+.row:hover {
+  background: var(--color-paper);
+}
+
+.activityMain h3,
+.rowMain h3 {
+  font-family: var(--font-sans);
+  font-size: 0.89rem;
+  font-weight: 600;
+  color: var(--color-ink);
+  margin-bottom: 2px;
+}
+
+.activityMeta,
+.rowMeta {
+  font-size: 0.78rem;
+  color: var(--color-ink-faint);
+}
+
+.activityEmpty,
+.empty {
+  padding: 40px 22px;
+  text-align: center;
+  color: var(--color-ink-soft);
+}
+
+.activityEmpty a,
+.empty a {
+  color: var(--color-indigo);
+  font-weight: 600;
+}
+
+/* ---------- Status badges ---------- */
+
+.status {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 999px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.statusPENDING_REVIEW {
+  background: var(--color-amber-tint);
+  color: var(--color-amber-dark);
+}
+.statusAPPROVED {
+  background: var(--color-indigo-tint);
+  color: var(--color-indigo);
+}
+.statusPUBLISHED {
+  background: var(--color-green-tint);
+  color: var(--color-green-dark);
+}
+.statusREJECTED {
+  background: var(--color-red-tint);
+  color: var(--color-red-dark);
+}
+.statusDRAFT {
+  background: var(--color-slate-tint);
+  color: var(--color-slate);
+}
+
+/* ---------- Mobile nav (top bar + slide-in drawer) ---------- */
+
+.mobileBar {
+  display: none;
+}
+
+.mobileMenuBtn {
+  background: none;
+  border: none;
+  color: inherit;
+  padding: 6px;
+  cursor: pointer;
+  display: flex;
+}
+
+.mobileDrawerBackdrop {
+  display: none;
+}
+
+.mobileDrawerClose {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .sidebar {
+    display: none;
+  }
+  .main {
+    padding: 24px 18px 60px;
+  }
+
+  .mobileBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: var(--gradient-indigo);
+    color: #ffffff;
+    padding: 14px 18px;
+  }
+
+  .mobileBrand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1rem;
+  }
+
+  .mobileDrawerBackdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 18, 40, 0.45);
+    z-index: 40;
+  }
+
+  .mobileDrawer {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: min(84vw, 300px);
+    z-index: 41;
+    box-shadow: 8px 0 32px rgba(20, 18, 40, 0.28);
+  }
+
+  .mobileDrawerClose {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.14);
+    color: #ffffff;
+    border: none;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+}

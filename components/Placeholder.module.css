@@ -1,0 +1,33 @@
+.wrap {
+  padding: 80px 24px 100px;
+  max-width: 640px;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber-dark);
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.wrap h1 {
+  font-size: 1.8rem;
+  margin-bottom: 16px;
+}
+
+.note {
+  color: var(--color-ink-soft);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.back {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--color-indigo);
+}

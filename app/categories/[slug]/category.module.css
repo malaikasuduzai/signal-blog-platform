@@ -1,0 +1,38 @@
+.page {
+  padding-bottom: 90px;
+}
+
+.header {
+  padding: 40px 0 32px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 36px;
+}
+
+.back {
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-ink-faint);
+  margin-bottom: 16px;
+}
+
+.back:hover {
+  color: var(--color-indigo);
+}
+
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: 2rem;
+}

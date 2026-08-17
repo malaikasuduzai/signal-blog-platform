@@ -1,0 +1,45 @@
+/* components/SectionHeading.module.css */
+
+.wrap {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 28px;
+  scroll-margin-top: 90px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-amber-dark);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.title {
+  font-size: 1.6rem;
+}
+
+.action {
+  display: inline-block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--color-indigo);
+  white-space: nowrap;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+.action:hover {
+  border-bottom-color: var(--color-indigo);
+}
+
+@media (min-width: 640px) {
+  .title {
+    font-size: 1.9rem;
+  }
+}

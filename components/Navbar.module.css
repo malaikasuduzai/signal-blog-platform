@@ -1,0 +1,237 @@
+/* components/Navbar.module.css */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: rgba(247, 247, 244, 0.92);
+  backdrop-filter: saturate(180%) blur(10px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.headerScrolled {
+  border-bottom-color: var(--color-border);
+  box-shadow: 0 1px 2px rgba(21, 22, 28, 0.03), 0 12px 24px -18px rgba(21, 22, 28, 0.25);
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--color-ink);
+}
+
+.logoMark {
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  background: linear-gradient(135deg, var(--color-indigo) 0%, var(--color-indigo) 50%, var(--color-amber) 50%, var(--color-amber) 100%);
+  flex-shrink: 0;
+}
+
+.desktopNav {
+  display: none;
+  align-items: center;
+  gap: 32px;
+}
+
+.navLink {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-ink-soft);
+  transition: color 0.15s ease;
+  position: relative;
+  padding: 4px 0;
+}
+
+.navLink:hover {
+  color: var(--color-ink);
+}
+
+.navLink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--gradient-indigo);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s ease;
+}
+
+.navLink:hover::after {
+  transform: scaleX(1);
+}
+
+.navLinkActive {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+
+.navLinkActive::after {
+  transform: scaleX(1);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.searchIcon {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  color: var(--color-ink-soft);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.searchIcon:hover {
+  background: var(--color-paper-dim);
+  color: var(--color-indigo);
+}
+
+.loginLink {
+  display: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-ink-soft);
+  padding: 8px 4px;
+  transition: color 0.15s ease;
+}
+
+.loginLink:hover {
+  color: var(--color-indigo);
+}
+
+.menuToggle {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+}
+
+.bun,
+.bun::before,
+.bun::after {
+  content: "";
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--color-ink);
+  border-radius: 2px;
+  transition: transform 0.2s ease, opacity 0.2s ease, top 0.2s ease;
+  position: relative;
+}
+
+.bun::before {
+  position: absolute;
+  top: -6px;
+}
+
+.bun::after {
+  position: absolute;
+  top: 6px;
+}
+
+.bunOpen {
+  background: transparent;
+}
+
+.bunOpen::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.bunOpen::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+.mobileNav {
+  max-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background: var(--color-paper);
+  border-bottom: 1px solid transparent;
+  transition: max-height 0.25s ease;
+}
+
+.mobileNavOpen {
+  max-height: 320px;
+  border-bottom-color: var(--color-border);
+}
+
+.mobileLink {
+  padding: 14px 24px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-top: 1px solid var(--color-border);
+  position: relative;
+}
+
+.mobileLinkActive {
+  color: var(--color-indigo);
+  font-weight: 700;
+}
+
+.mobileLinkActive::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--gradient-indigo);
+}
+
+.mobileCta {
+  margin: 12px 24px 18px;
+  padding: 12px 16px;
+  text-align: center;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-paper);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+@media (min-width: 860px) {
+  .desktopNav {
+    display: flex;
+  }
+  .ctaButton,
+  .loginLink,
+  .searchIcon {
+    display: inline-flex;
+  }
+  .menuToggle {
+    display: none;
+  }
+  .mobileNav {
+    display: none;
+  }
+}

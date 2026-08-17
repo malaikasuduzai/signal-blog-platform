@@ -1,0 +1,27 @@
+.page {
+  padding: 56px 0 100px;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-indigo);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 2.1rem;
+  margin-bottom: 10px;
+}
+
+.sub {
+  color: var(--color-ink-soft);
+  max-width: 60ch;
+}

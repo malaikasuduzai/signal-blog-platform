@@ -1,0 +1,205 @@
+/* components/BlogCard.module.css */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  height: 100%;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.imageLink {
+  display: block;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: var(--color-paper-dim);
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .image {
+  transform: scale(1.05);
+}
+
+.categoryRow {
+  display: flex;
+  align-items: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 20px 20px;
+  flex: 1;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.title a {
+  transition: color 0.15s ease;
+}
+
+.title a:hover {
+  color: var(--color-indigo);
+}
+
+.excerpt {
+  font-size: 0.9rem;
+  color: var(--color-ink-soft);
+  line-height: 1.55;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: var(--color-ink-faint);
+  margin-top: auto;
+  padding-top: 4px;
+  flex-wrap: wrap;
+}
+
+.avatar {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.authorName {
+  font-weight: 600;
+  color: var(--color-ink-soft);
+}
+
+.dot {
+  opacity: 0.6;
+}
+
+.readMore {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.readMore span {
+  transition: transform 0.15s ease;
+}
+
+.card:hover .readMore span {
+  transform: translateX(3px);
+}
+
+/* Default / featured variant: a real, tappable button */
+.readMoreButton {
+  margin-top: 6px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--color-indigo);
+  color: var(--color-indigo);
+  background: var(--color-white);
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.readMoreButton:hover {
+  background: var(--color-indigo);
+  color: var(--color-white);
+}
+
+/* Compact variant: stays a lightweight text link so it fits the tight row */
+.readMoreCompact {
+  margin-top: 2px;
+  color: var(--color-indigo);
+}
+
+/* Featured variant: larger, horizontal on wide screens */
+.featured {
+  box-shadow: var(--shadow-card-hover);
+}
+
+.featured .title {
+  font-size: 1.4rem;
+}
+
+@media (min-width: 760px) {
+  .featured {
+    flex-direction: row;
+  }
+  .featured .imageLink {
+    flex-shrink: 0;
+    width: 46%;
+  }
+  .featured .imageWrap {
+    width: 100%;
+    aspect-ratio: auto;
+    height: 100%;
+  }
+  .featured .body {
+    justify-content: center;
+    padding: 26px 30px;
+  }
+}
+
+/* Compact variant: for sidebars / trending lists */
+.compact {
+  flex-direction: row;
+  box-shadow: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+}
+
+.compact:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.compact .imageWrap {
+  width: 96px;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  margin: 4px 0 4px 0;
+}
+
+.compact .categoryRow {
+  display: none;
+}
+
+.compact .body {
+  padding: 12px 0 12px 14px;
+  gap: 6px;
+}
+
+.compact .title {
+  font-size: 0.95rem;
+}

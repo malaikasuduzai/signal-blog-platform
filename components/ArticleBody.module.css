@@ -1,0 +1,70 @@
+/* components/ArticleBody.module.css */
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  font-size: 1.08rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+  max-width: 68ch;
+  text-wrap: pretty;
+}
+
+.paragraph {
+  color: #26272f;
+  text-align: justify;
+  text-justify: inter-word;
+  hyphens: auto;
+  word-spacing: 0.02em;
+}
+
+.heading {
+  font-size: 1.4rem;
+  margin-top: 14px;
+  letter-spacing: -0.005em;
+}
+
+.quote {
+  margin: 6px 0;
+  padding: 4px 0 4px 22px;
+  border-left: 3px solid var(--color-amber);
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--color-ink-soft);
+}
+
+.figure {
+  margin: 8px 0;
+}
+
+.figureImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-paper-dim);
+}
+
+.figureImage {
+  object-fit: cover;
+}
+
+.caption {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  color: var(--color-ink-faint);
+  text-align: center;
+}
+
+@media (min-width: 640px) {
+  .body {
+    font-size: 1.14rem;
+  }
+  .heading {
+    font-size: 1.6rem;
+  }
+}

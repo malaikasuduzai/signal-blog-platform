@@ -1,0 +1,85 @@
+// prisma/schema.prisma
+// DB design per PRD §"Database Design" - MySQL via Prisma.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  ADMIN
+  AUTHOR
+  USER
+}
+
+enum BlogStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+  PUBLISHED
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String // bcrypt hash, never store plain text
+  role      Role     @default(AUTHOR)
+  avatar    String?
+  bio       String?  @db.Text
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+
+  // Forgot-password flow: a hashed, single-use token with an expiry.
+  // We store the hash (not the raw token) so a DB leak alone can't be
+  // used to reset accounts -- same reasoning as hashing the password itself.
+  resetTokenHash   String?
+  resetTokenExpiry DateTime?
+
+  blogs Blog[]
+
+  @@index([role])
+}
+
+model Category {
+  id    String  @id @default(cuid())
+  slug  String  @unique
+  name  String
+  color String?
+
+  blogs Blog[]
+}
+
+model Blog {
+  id            String     @id @default(cuid())
+  slug          String     @unique
+  title         String
+  excerpt       String     @db.Text
+  content       Json // array of content blocks: {type, text/src/alt/caption}
+  featuredImage String?
+  status        BlogStatus @default(PENDING_REVIEW)
+  featured      Boolean    @default(false)
+  popular       Boolean    @default(false)
+  tags          Json?
+  references    Json? // [{ title, url }]
+  rejectionNote String?    @db.Text // set by admin on reject / request changes
+
+  authorId String
+  author   User   @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  publishedAt DateTime?
+
+  @@index([status])
+  @@index([authorId])
+  @@index([categoryId])
+}
