@@ -8,6 +8,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/auth";
+import { sendNewPostNotification } from "@/lib/email";
 
 const VALID_STATUSES = ["DRAFT", "PENDING_REVIEW", "APPROVED", "REJECTED", "PUBLISHED"];
 
@@ -106,11 +107,25 @@ export async function PATCH(request, { params }) {
     return NextResponse.json({ error: "Please fix the highlighted fields.", fields: fieldErrors }, { status: 400 });
   }
 
+  // A post only counts as "newly published" the first time it crosses
+  // into PUBLISHED -- re-saving an already-published post (e.g. editing
+  // a typo) must not re-notify every subscriber.
+  const isNewlyPublished = data.status === "PUBLISHED" && !existing.publishedAt;
+
   const blog = await prisma.blog.update({
     where: { id: params.id },
     data,
     include: { category: true, author: true },
   });
+
+  if (isNewlyPublished) {
+    // Fire-and-forget from the request's point of view: email delivery
+    // failures are logged inside sendNewPostNotification and must never
+    // turn a successful publish into a 500 for the admin.
+    sendNewPostNotification(blog).catch((err) =>
+      console.error("[email] Unexpected error notifying subscribers:", err)
+    );
+  }
 
   return NextResponse.json({ blog });
 }

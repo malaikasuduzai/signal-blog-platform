@@ -1,6 +1,7 @@
 // components/Footer.jsx
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import { categories } from "@/lib/categories";
 import styles from "./Footer.module.css";
@@ -8,6 +9,40 @@ import styles from "./Footer.module.css";
 export default function Footer() {
   const year = new Date().getFullYear();
   const topCategories = categories.slice(0, 6);
+
+  const [email, setEmail] = useState("");
+  const [status, setStatus] = useState("idle"); // idle | loading | success | error
+  const [message, setMessage] = useState("");
+
+  async function handleSubscribe(e) {
+    e.preventDefault();
+    if (status === "loading") return;
+
+    setStatus("loading");
+    setMessage("");
+
+    try {
+      const res = await fetch("/api/newsletter", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json().catch(() => ({}));
+
+      if (!res.ok) {
+        setStatus("error");
+        setMessage(data.error || "Something went wrong. Please try again.");
+        return;
+      }
+
+      setStatus("success");
+      setMessage(data.message || "Subscribed!");
+      setEmail("");
+    } catch {
+      setStatus("error");
+      setMessage("Network error. Please try again.");
+    }
+  }
 
   return (
     <footer className={styles.footer}>
@@ -46,11 +81,30 @@ export default function Footer() {
         <div className={styles.col}>
           <h3 className={styles.colTitle}>Newsletter</h3>
           <p className={styles.tagline}>Get new posts in your inbox.</p>
-          <form className={styles.footerForm} onSubmit={(e) => e.preventDefault()}>
+          <form className={styles.footerForm} onSubmit={handleSubscribe}>
             <label htmlFor="footer-email" className="visually-hidden">Email address</label>
-            <input id="footer-email" type="email" placeholder="you@example.com" required />
-            <button type="submit">Join</button>
+            <input
+              id="footer-email"
+              type="email"
+              placeholder="you@example.com"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={status === "loading"}
+            />
+            <button type="submit" disabled={status === "loading"}>
+              {status === "loading" ? "Joining…" : "Join"}
+            </button>
           </form>
+          {message && (
+            <p
+              className={styles.formMessage}
+              data-status={status}
+              role="status"
+            >
+              {message}
+            </p>
+          )}
         </div>
       </div>
 

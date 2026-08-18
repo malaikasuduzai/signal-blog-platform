@@ -104,6 +104,25 @@
   white-space: nowrap;
 }
 
+.footerForm input:disabled,
+.footerForm button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.formMessage {
+  margin-top: 10px;
+  font-size: 0.82rem;
+}
+
+.formMessage[data-status="success"] {
+  color: #8fd19e;
+}
+
+.formMessage[data-status="error"] {
+  color: #e2897d;
+}
+
 .bottom {
   display: flex;
   justify-content: center;

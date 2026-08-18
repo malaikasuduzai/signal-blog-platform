@@ -30,7 +30,7 @@ model User {
   email     String   @unique
   password  String // bcrypt hash, never store plain text
   role      Role     @default(AUTHOR)
-  avatar    String?
+  avatar    String?  @db.Text
   bio       String?  @db.Text
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
@@ -44,6 +44,13 @@ model User {
   blogs Blog[]
 
   @@index([role])
+}
+
+model NewsletterSubscriber {
+  id               String   @id @default(cuid())
+  email            String   @unique
+  unsubscribeToken String   @unique @default(cuid())
+  createdAt        DateTime @default(now())
 }
 
 model Category {
@@ -61,7 +68,7 @@ model Blog {
   title         String
   excerpt       String     @db.Text
   content       Json // array of content blocks: {type, text/src/alt/caption}
-  featuredImage String?
+  featuredImage String?    @db.Text
   status        BlogStatus @default(PENDING_REVIEW)
   featured      Boolean    @default(false)
   popular       Boolean    @default(false)

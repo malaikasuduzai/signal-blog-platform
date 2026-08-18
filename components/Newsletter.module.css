@@ -87,6 +87,25 @@
   white-space: nowrap;
 }
 
+.form input:disabled,
+.form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.formMessage {
+  font-size: 0.85rem;
+  margin-top: -8px;
+}
+
+.formMessage[data-status="success"] {
+  color: #8fd19e;
+}
+
+.formMessage[data-status="error"] {
+  color: #f4a89c;
+}
+
 .altAction {
   font-size: 0.88rem;
   color: rgba(247, 247, 244, 0.65);

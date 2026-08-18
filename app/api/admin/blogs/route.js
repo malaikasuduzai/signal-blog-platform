@@ -8,6 +8,7 @@
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { requireAdmin } from "@/lib/auth";
+import { sendNewPostNotification } from "@/lib/email";
 
 function slugify(title) {
   return title
@@ -160,7 +161,14 @@ export async function POST(request) {
       categoryId: category.id,
       publishedAt: status === "PUBLISHED" ? new Date() : null,
     },
+    include: { category: true, author: true },
   });
+
+  if (status === "PUBLISHED") {
+    sendNewPostNotification(blog).catch((err) =>
+      console.error("[email] Unexpected error notifying subscribers:", err)
+    );
+  }
 
   return NextResponse.json({ blog }, { status: 201 });
 }
